@@ -1,0 +1,47 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ECommerce.MainPage">
+
+    <StackLayout>
+        <!-- Filter Section -->
+        <Picker x:Name="CategoryPicker"
+                Title="Select Category"
+                 />
+
+        <!-- Product List -->
+        <CollectionView x:Name="ProductList">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label Text="{Binding Name}" FontSize="Medium" />
+                        <Label Text="{Binding Price}" FontSize="Small" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Footer Navigation -->
+        <!--
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Text="Login"
+                    Grid.Column="0"
+                    IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}"
+                    Command="{Binding LoginCommand}" />
+
+            <Button Text="Profile"
+                    Grid.Column="0"
+                    IsVisible="{Binding IsLoggedIn}"
+                    Command="{Binding ProfileCommand}" />
+
+            <Button Text="Panier"
+                    Grid.Column="2"
+                    Command="{Binding PanierCommand}" />
+        </Grid> -->
+    </StackLayout>
+</ContentPage>

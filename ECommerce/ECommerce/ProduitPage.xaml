@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="ECommerce.ProduitPage">
+    <StackLayout>
+        <!-- Filter by Category -->
+        <Picker x:Name="categoryPicker" Title="Select Category" SelectedIndexChanged="OnCategoryChanged">
+        </Picker>
+
+        <!-- List of Products -->
+        <ListView x:Name="produitListView" ItemSelected="OnItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <!-- Product Image -->
+                            <ffimageloading:CachedImage 
+                                Source="{Binding photo}" 
+                                WidthRequest="100" 
+                                HeightRequest="100"
+                                
+                                />
+                            <!-- Product Info (Designation and Price) -->
+                                <!-- Designation on the left -->
+                                <Label Text="{Binding designation}" FontSize="16" HorizontalOptions="Start" />
+
+                                <!-- Price on the right -->
+                                <Label Text="{Binding prix, StringFormat='{}{0:C}'}" HorizontalOptions="EndAndExpand" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
+
+

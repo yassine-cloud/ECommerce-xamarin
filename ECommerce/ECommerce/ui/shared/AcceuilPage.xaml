@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ECommerce.AcceuilPage"
+             Title="Acceuil">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20" Spacing="20">
+
+                <!-- Application Description -->
+                <Label Text="Bienvenue à E-Commerce"
+                       FontSize="24"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"
+                       TextColor="Black" />
+
+                <Label Text="E-Commerce est une plateforme qui vous permet de découvrir et d'acheter des produits facilement."
+                       FontSize="16"
+                       HorizontalOptions="FillAndExpand"
+                       TextColor="Gray"
+                       FontAttributes="Bold" />
+                <Label Text="Vous pouvez explorer une variété de catégories, gérer votre profil, suivre vos commandes, et optimiser votre expérience d'achat grâce à un panier intelligent."
+                       FontSize="16"
+                       HorizontalOptions="FillAndExpand"
+                       TextColor="Gray"
+                       FontAttributes="Bold" />
+
+                <Label Text="Commencez votre shopping dès maintenant !"
+                       FontSize="20"
+                       HorizontalOptions="FillAndExpand"
+                       TextColor="Black"  />
+
+                <!-- Image Banner -->
+                <Image Source="OSNIT.png" 
+                       WidthRequest="600"
+                       HeightRequest="200"
+                       Aspect="AspectFill" />
+
+                <!-- Navigation Buttons -->
+                <StackLayout Spacing="15">
+                    <Button Text="Voir les Produits"
+                            FontSize="18"
+                            BackgroundColor="#0078D7"
+                            TextColor="White"
+                            CornerRadius="10"
+                            Clicked="OnViewProductsClicked" />
+
+                    <Button Text="Mon Profil"
+                            FontSize="18"
+                            BackgroundColor="#28A745"
+                            TextColor="White"
+                            CornerRadius="10"
+                            Clicked="OnProfileClicked" />
+
+                    <Button Text="Mon Panier"
+                            FontSize="18"
+                            BackgroundColor="#FFC107"
+                            TextColor="White"
+                            CornerRadius="10"
+                            Clicked="OnCartClicked" />
+
+                    <!--<Button Text="Se Déconnecter"
+                            FontSize="18"
+                            BackgroundColor="#DC3545"
+                            TextColor="White"
+                            CornerRadius="10"
+                            Clicked="OnLogoutClicked" />-->
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

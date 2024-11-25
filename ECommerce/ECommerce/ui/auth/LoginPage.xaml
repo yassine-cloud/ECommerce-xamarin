@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ECommerce.LoginPage"
+             Title="Login"
+             BackgroundColor="#F5F5F5">
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="30" VerticalOptions="Center">
+            <!-- App Logo -->
+            <Image Source="OSNIT.png" HeightRequest="100" HorizontalOptions="Center" />
+
+            <!-- Login Title -->
+            <Label Text="Login" FontSize="30" FontAttributes="Bold" TextColor="#333" HorizontalOptions="Center" />
+
+            <!-- Username Entry -->
+            <Entry x:Name="EmailEntry"
+                   Placeholder="Email"
+                   TextColor="#333"
+                   BackgroundColor="White"
+                   HeightRequest="50"
+                   Margin="0,10,0,0" />
+
+            <!-- Password Entry -->
+            <Entry x:Name="PasswordEntry"
+                   Placeholder="Password"
+                   TextColor="#333"
+                   IsPassword="True"
+                   BackgroundColor="White"
+                   HeightRequest="50" />
+
+            <!-- Login Button -->
+            <Button Text="Login"
+                    BackgroundColor="#0078D7"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    Clicked="OnLoginButtonClicked" />
+
+            <!-- Register Link -->
+            <StackLayout HorizontalOptions="Center">
+                <Label Text="Don't have an account?"
+                       FontSize="14"
+                       TextColor="#777" />
+                <Label Text="Register"
+                       FontSize="14"
+                       TextColor="#0078D7"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnRegisterTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:ECommerce"
+       x:Class="ECommerce.AppShell"
+       FlyoutBehavior="Flyout">
+
+    <!-- Main Flyout Item with Tabs -->
+    <FlyoutItem Title="Main" Icon="home.png">
+        <!-- Tab 1: Acceuil -->
+        <ShellContent Title="Acceuil"
+                      Route="AcceuilPage"
+                      ContentTemplate="{DataTemplate local:AcceuilPage}" />
+        <!-- Tab 2: Produits -->
+        <ShellContent Title="Produits"
+                      Route="ProduitPage"
+                      ContentTemplate="{DataTemplate local:ProduitPage}" />
+        <!-- Tab 3: Profile -->
+        <ShellContent Title="Profile"
+                      Route="ProfilePage"
+                      ContentTemplate="{DataTemplate local:ProfilePage}" />
+    </FlyoutItem>
+    
+
+    <!-- Separate Flyout Item for "A Propos" -->
+    <FlyoutItem Title="A Propos" Icon="info.png">
+        <ShellContent Title="About"
+                      Route="AboutPage"
+                      ContentTemplate="{DataTemplate local:AboutPage}" />
+    </FlyoutItem>
+
+    <ShellContent Route="LoginPage"
+                  ContentTemplate="{DataTemplate local:LoginPage}" />
+</Shell>

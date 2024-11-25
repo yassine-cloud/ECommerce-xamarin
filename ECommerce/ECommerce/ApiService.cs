@@ -8,14 +8,14 @@ namespace ECommerce
 {
     public class ApiService
     {
-        public static readonly string apiUrl = "http://10.0.2.2:8080/ECommerce_backend_war_exploded/api/";
+        public static readonly string apiUrl = "http://10.0.2.2:8080/";
         private static HttpClient _httpClient;
 
         //public ApiService()
         //{
         //    _httpClient = new HttpClient
         //    {
-        //        BaseAddress = new Uri("http://10.0.2.2:8080/ECommerce_backend_war_exploded/api/")
+        //        BaseAddress = new Uri("http://10.0.2.2:8080/")
         //    };
         //    _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         //}

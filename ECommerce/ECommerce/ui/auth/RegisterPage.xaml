@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ECommerce.ui.auth.RegisterPage"
+             Title="Register">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20" Spacing="15">
+
+                <!-- Title -->
+                <Label Text="Create an Account"
+                       FontSize="24"
+                       HorizontalOptions="Center" />
+
+                <!-- Name -->
+                <Entry x:Name="NomEntry"
+                       Placeholder="Enter your last name (Nom)"
+                       Keyboard="Text" />
+
+                <!-- First Name -->
+                <Entry x:Name="PrenomEntry"
+                       Placeholder="Enter your first name (Prenom)"
+                       Keyboard="Text" />
+
+                <!-- Email -->
+                <Entry x:Name="EmailEntry"
+                       Placeholder="Enter your email"
+                       Keyboard="Email" />
+
+                <!-- Password -->
+                <Entry x:Name="PasswordEntry"
+                       Placeholder="Enter your password"
+                       IsPassword="True" />
+
+                <!-- Password -->
+                <Entry x:Name="CPasswordEntry"
+                       Placeholder="Confirm your password"
+                       IsPassword="True" />
+
+                <!-- Contact -->
+                <Entry x:Name="ContactEntry"
+                       Placeholder="Enter your contact number"
+                       Keyboard="Telephone" />
+
+                <!-- Role (pre-filled as USER) -->
+                <!--<Label Text="Role: USER"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />-->
+
+                <!-- Register Button -->
+                <Button Text="Register"
+                        BackgroundColor="#0078D7"
+                        TextColor="White"
+                        CornerRadius="5"
+                        Clicked="OnRegisterClicked" />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -18,7 +18,7 @@ namespace ECommerce
 
         private List<Produit> produits;
         private List<Produit> produitsFiltered;
-        private List<Categorie> categories;
+        private List<CategorieRead> categories;
         private string selectedCategoryId;
 
         public ProduitPage()
@@ -34,7 +34,7 @@ namespace ECommerce
             selectedCategoryId = null;
 
             // Add "ALL" option to categories
-            var allCategory = new Categorie { id = null, nom = "ALL" };
+            var allCategory = new CategorieRead { id = null, nom = "ALL" };
             categories.Insert(0, allCategory);
 
             categoryPicker.ItemsSource = categories.Select(c => c.nom).ToList();

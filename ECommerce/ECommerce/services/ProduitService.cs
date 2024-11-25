@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using ECommerce.auth;
 using ECommerce.models;
 using Newtonsoft.Json;
 
@@ -20,7 +21,7 @@ namespace ECommerce.services
         // Retrieve all products
         public List<Produit> GetProduits()
         {
-            HttpResponseMessage response = _httpClient.GetAsync("produit/produits").Result;
+            HttpResponseMessage response = _httpClient.GetAsync("produits").Result;
             if (response.IsSuccessStatusCode)
             {
                 var jsonString = response.Content.ReadAsStringAsync().Result;
@@ -30,38 +31,80 @@ namespace ECommerce.services
         }
 
 
-        public List<Produit> GetProduits(string category)
+        public List<Produit> GetProduits(string categorieId)
         {
-            HttpResponseMessage response = _httpClient.GetAsync("produit/produits").Result;
+            HttpResponseMessage response = _httpClient.GetAsync($"produits/categorie/{categorieId}").Result;
             if (response.IsSuccessStatusCode)
             {
                 var jsonString = response.Content.ReadAsStringAsync().Result;
                 var list = JsonConvert.DeserializeObject<List<Produit>>(jsonString);
-                if (category != null)
-                {
-                    List<Produit> filteredList = new List<Produit>();
-                    foreach (var produit in list)
-                    {
-                        if (produit.categorie.Equals(category))
-                        {
-                            filteredList.Add(produit);
-                        }
-                    }
-                    return filteredList;
-                }
+                return list;
             }
             return null;
         }
 
         public Produit GetProduit(int id)
         {
-            HttpResponseMessage response = _httpClient.GetAsync($"produit/produit/{id}").Result;
+            HttpResponseMessage response = _httpClient.GetAsync($"produits/{id}").Result;
             if (response.IsSuccessStatusCode)
             {
                 var jsonString = response.Content.ReadAsStringAsync().Result;
                 return JsonConvert.DeserializeObject<Produit>(jsonString);
             }
             return null;
+        }
+
+        public bool AddProduit(Produit produit)
+        {
+            var token = SessionManager.GetTokenAsync().Result;
+            if (token == null)
+            {
+                return false;
+            }
+            _httpClient.DefaultRequestHeaders.Clear();
+            _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            var content = new StringContent(JsonConvert.SerializeObject(produit), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = _httpClient.PostAsync($"produits?categorieId={produit.categorie}", content).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool UpdateProduit(Produit produit)
+        {
+            var token = SessionManager.GetTokenAsync().Result;
+            if (token == null)
+            {
+                return false;
+            }
+            _httpClient.DefaultRequestHeaders.Clear();
+            _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            var content = new StringContent(JsonConvert.SerializeObject(produit), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = _httpClient.PutAsync($"produits/{produit.id}", content).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool DeleteProduit(int id)
+        {
+            var token = SessionManager.GetTokenAsync().Result;
+            if (token == null)
+            {
+                return false;
+            }
+            _httpClient.DefaultRequestHeaders.Clear();
+            _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            HttpResponseMessage response = _httpClient.DeleteAsync($"produits/{id}").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
         }
 
     }

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ECommerce.ProfilePage"
+             BackgroundColor="#F5F5F5">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+
+            <!-- Header -->
+            <Label Text="Profile" 
+               FontSize="Large" 
+               FontAttributes="Bold" 
+               HorizontalOptions="Center" />
+
+            <!-- Profile Header -->
+            <Frame CornerRadius="25" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" BackgroundColor="#E0E0E0">
+                <Image Source="profile_placeholder.jpg" Aspect="AspectFill" />
+            </Frame>
+
+            <!-- User Information -->
+            <Label Text="Name:" FontAttributes="Bold" />
+            <Label Text="{Binding Nom}" />
+
+            <Label Text="Surname:" FontAttributes="Bold" />
+            <Label Text="{Binding Prenom}" />
+
+            <Label Text="Email:" FontAttributes="Bold" />
+            <Label Text="{Binding Email}" />
+
+            <Label Text="Contact:" FontAttributes="Bold" />
+            <Label Text="{Binding Contact}" />
+
+            <Label Text="Role:" FontAttributes="Bold" />
+            <Label Text="{Binding Role}" />
+
+            <!-- Buttons -->
+            <Button Text="Go to Panier"
+                    BackgroundColor="#007BFF"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Command="{Binding GoToPanierCommand}" />
+
+            <Button Text="Edit Profile"
+                    BackgroundColor="#28A745"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Command="{Binding EditProfileCommand}" />
+
+            <Button Text="Show All users"
+                    x:Name="btnShowUsers"
+                    BackgroundColor="#FFC107"
+                    TextColor="White"
+                    IsVisible="false"
+                    CornerRadius="10"
+                    Command="{Binding EditProfileCommand}" />
+
+            <Button Text="Logout"
+                    BackgroundColor="#DC3545"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Command="{Binding LogoutCommand}" />
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

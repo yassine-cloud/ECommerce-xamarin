@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ECommerce.AboutPage"
+             Title="À propos">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15" VerticalOptions="CenterAndExpand">
+            <!-- App Icon -->
+            <Image Source="App_icon.jpg" HeightRequest="120" WidthRequest="120" HorizontalOptions="Center" />
+
+            <!-- App Description -->
+            <Label Text="ECommerce Application"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" />
+
+            <Label Text="Une application de gestion d'achat en ligne, simple et efficace, développée pour améliorer l'expérience des utilisateurs dans le commerce électronique."
+                   FontSize="16"
+                   HorizontalTextAlignment="Center" />
+
+            <!-- Author Information -->
+            <StackLayout Spacing="5">
+                <Label Text="Développé par :" FontSize="18" FontAttributes="Bold" />
+                <Label Text="Yassine Saadaoui" FontSize="16" />
+                <Label Text="Email : saadaouiy51@gmail.com" FontSize="16" TextColor="Blue" />
+            </StackLayout>
+
+            <!-- Copyright Information -->
+            <StackLayout Spacing="5" Padding="20">
+                <Label Text="© 2024 ECommerce App. Tous droits réservés."
+                       FontSize="14"
+                       HorizontalTextAlignment="Center" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ECommerce.ui.users.EditProfilePage"
+             Title="Edit Profile">
+    <ScrollView>
+        <StackLayout Padding="20">
+            <!-- Form Fields -->
+            <Entry Text="{Binding Nom}" Placeholder="Nom" />
+            <Entry Text="{Binding Prenom}" Placeholder="Prenom" />
+            <Entry Text="{Binding Email}" Placeholder="Email" />
+            <Entry Text="{Binding Contact}" Placeholder="Contact" />
+            <Entry Text="{Binding Password}" Placeholder="Password" IsPassword="True" />
+
+            <!-- Save Button -->
+            <Button Text="Save Changes"
+                    Command="{Binding SaveCommand}"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    Margin="0,20,0,10" />
+
+            <!-- Cancel Button -->
+            <Button Text="Cancel"
+                    Command="{Binding CancelCommand}"
+                    BackgroundColor="Gray"
+                    TextColor="White" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

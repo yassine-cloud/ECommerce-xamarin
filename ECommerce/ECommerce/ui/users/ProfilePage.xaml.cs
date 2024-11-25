@@ -29,7 +29,7 @@ namespace ECommerce
             BindingContext = new ProfileViewModel(SessionManager.GetUser(), Navigation);
             // Check if user is logged in
 
-            btnShowUsers.IsVisible = SessionManager.GetUser().role == Role.ADMIN;
+            btnShowUsers.IsVisible = SessionManager.GetUser().role == models.Role.ADMIN;
             BindingContext = new ProfileViewModel(SessionManager.GetUser(), Navigation);
         }
 
@@ -45,6 +45,7 @@ namespace ECommerce
 
         public Command GoToPanierCommand { get; }
         public Command EditProfileCommand { get; }
+        public Command ShowAllUsers { get; }
         public Command LogoutCommand { get; }
 
         public ProfileViewModel(UserRead user, INavigation navigtation)
@@ -58,6 +59,7 @@ namespace ECommerce
 
             GoToPanierCommand = new Command(OnGoToPanier);
             EditProfileCommand = new Command(OnEditProfile);
+            ShowAllUsers = new Command(OnShowAllUsers);
             LogoutCommand = new Command(OnLogout);
         }
 
@@ -79,12 +81,17 @@ namespace ECommerce
 
         private async void OnGoToPanier()
         {
-            await _navigation.PushAsync(new CartPage());
+            await _navigation.PushAsync(new CartPage(null));
         }
 
         private async void OnEditProfile()
         {
             await _navigation.PushAsync(new EditProfilePage());
+        }
+
+        private async void OnShowAllUsers()
+        {
+            await _navigation.PushAsync(new UsersPage());
         }
 
         private void OnLogout()

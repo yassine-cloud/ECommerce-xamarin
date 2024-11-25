@@ -47,7 +47,7 @@ namespace ECommerce
                 return;
             }
             // Navigate to the Cart page (ensure you have a CartPage defined)
-            await Navigation.PushAsync(new CartPage());
+            await Navigation.PushAsync(new CartPage(null));
         }
 
         // Event handler for the "Se Déconnecter" button

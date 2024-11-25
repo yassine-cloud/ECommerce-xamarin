@@ -17,6 +17,24 @@ namespace ECommerce.services
             httpClient = ApiService.GetHttpClient();
         }
 
+        public List<UserRead> getAllUsers()
+        {
+            var token = SessionManager.GetTokenAsync().Result;
+            if (token == null)
+            {
+                return null;
+            }
+            httpClient.DefaultRequestHeaders.Clear();
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            HttpResponseMessage response = httpClient.GetAsync("users").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonString = response.Content.ReadAsStringAsync().Result;
+                return JsonConvert.DeserializeObject<List<UserRead>>(jsonString);
+            }
+            return null;
+        }
+
         public UserRead getUserById(string id)
         {
             var token = SessionManager.GetTokenAsync().Result;

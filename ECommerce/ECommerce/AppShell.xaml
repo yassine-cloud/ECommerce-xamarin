@@ -28,7 +28,4 @@
                       Route="AboutPage"
                       ContentTemplate="{DataTemplate local:AboutPage}" />
     </FlyoutItem>
-
-    <ShellContent Route="LoginPage"
-                  ContentTemplate="{DataTemplate local:LoginPage}" />
 </Shell>

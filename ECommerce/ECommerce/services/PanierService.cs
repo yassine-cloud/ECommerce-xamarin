@@ -112,7 +112,7 @@ namespace ECommerce.services
             return false;
         }
 
-        public bool DeletePanier(int id)
+        public bool DeletePanier(string id)
         {
             var token = SessionManager.GetTokenAsync().Result;
             if (token == null)

@@ -114,12 +114,12 @@ namespace ECommerce
                 }
                 else return;
             }
-            if (quantity > 1 && produitIn.prix > 2000)
+            if (quantity > 1 && (produitIn.prix * quantity) > 2000)
             {
                 await DisplayAlert("Alert", "You can't buy more than one product with a price greater than 2000.", "OK");
                 return;
             }
-            if (quantity > 1 && produitIn.prix <= 2000)
+            if (quantity > 1 && (produitIn.prix * quantity) <= 2000)
             {
                 // Add the product to the cart
                 AddToCart(Product, quantity);
@@ -131,7 +131,7 @@ namespace ECommerce
                 AddToCart(Product, quantity);
                 return;
             }
-            if (produitIn.prix > 2000)
+            if ((produitIn.prix * quantity) > 2000)
             {
                 await DisplayAlert("Alert", "You can't buy this product because its price is greater than 2000.", "OK");
                 return;
@@ -178,13 +178,13 @@ namespace ECommerce
                 else return;
             }
 
-            if (quantity > 1 && produitIn.prix > 2000)
+            if (quantity > 1 && (produitIn.prix * quantity) > 2000)
             {
                 await DisplayAlert("Alert", "You can't buy more than one product with a price greater than 2000.", "OK");
                 return;
             }
 
-            if (quantity > 1 && produitIn.prix <= 2000)
+            if (quantity > 1 && (produitIn.prix * quantity) <= 2000)
             {
                 // Add the product to the cart
                 panierUpdate.quantite = quantity;
@@ -220,7 +220,7 @@ namespace ECommerce
                 return;
             }
 
-            if (produitIn.prix > 2000)
+            if ((produitIn.prix * quantity) > 2000)
             {
                 await DisplayAlert("Alert", "You can't buy this product because its price is greater than 2000.", "OK");
                 return;

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="ECommerce.ui.produits.AdminProduct"
+             Title="{Binding CategoryTitle}">
+    <StackLayout>
+        <!-- List of Products -->
+        <ListView x:Name="produitListView" ItemSelected="OnItemSelected" RowHeight="140" SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <!-- Product Image -->
+                            <ffimageloading:CachedImage 
+                                Source="{Binding photo}" 
+                                WidthRequest="100" 
+                                HeightRequest="100"
+                                />
+
+                            <!-- Product Info -->
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="10,0">
+                                <!-- Product Designation -->
+                                <Label Text="{Binding designation}" FontSize="16" FontAttributes="Bold" />
+
+                                <!-- Product Price -->
+                                <Label Text="{Binding prix, StringFormat='Price: {0:C}'}" FontSize="14" TextColor="Gray" />
+                            </StackLayout>
+
+                            <!-- Action Buttons -->
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center">
+                                <!-- Edit Button -->
+                                <ImageButton Source="edit_icon.png"
+                                             WidthRequest="30"
+                                             HeightRequest="30"
+                                             BackgroundColor="White"
+                                             Clicked="OnEditProductClicked"
+                                             CommandParameter="{Binding .}" />
+
+                                <!-- Delete Button -->
+                                <ImageButton Source="delete_icon.png"
+                                             WidthRequest="30"
+                                             HeightRequest="30"
+                                             BackgroundColor="White"
+                                             Clicked="OnDeleteProductClicked"
+                                             CommandParameter="{Binding .}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Add Button -->
+        <Button Text="Add Product"
+                BackgroundColor="Green"
+                TextColor="White"
+                Clicked="OnAddProductClicked"
+                Margin="10" />
+    </StackLayout>
+</ContentPage>

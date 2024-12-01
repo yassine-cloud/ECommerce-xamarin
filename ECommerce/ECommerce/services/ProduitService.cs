@@ -54,7 +54,7 @@ namespace ECommerce.services
             return null;
         }
 
-        public bool AddProduit(Produit produit)
+        public bool AddProduit(ProduitCreate produit, string categoryId)
         {
             var token = SessionManager.GetTokenAsync().Result;
             if (token == null)
@@ -64,7 +64,7 @@ namespace ECommerce.services
             _httpClient.DefaultRequestHeaders.Clear();
             _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             var content = new StringContent(JsonConvert.SerializeObject(produit), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = _httpClient.PostAsync($"produits?categorieId={produit.categorie}", content).Result;
+            HttpResponseMessage response = _httpClient.PostAsync($"produits?categorieId={categoryId}", content).Result;
             if (response.IsSuccessStatusCode)
             {
                 return true;
@@ -72,7 +72,7 @@ namespace ECommerce.services
             return false;
         }
 
-        public bool UpdateProduit(Produit produit)
+        public bool UpdateProduit(ProduitUpdate produit)
         {
             var token = SessionManager.GetTokenAsync().Result;
             if (token == null)
@@ -90,7 +90,7 @@ namespace ECommerce.services
             return false;
         }
 
-        public bool DeleteProduit(int id)
+        public bool DeleteProduit(string id)
         {
             var token = SessionManager.GetTokenAsync().Result;
             if (token == null)

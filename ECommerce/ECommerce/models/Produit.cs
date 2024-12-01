@@ -13,5 +13,20 @@ namespace ECommerce.models
         public string categorie { get; set; }
 
     }
-   
+
+    public class ProduitCreate
+    {
+        public string designation { get; set; }
+        public double prix { get; set; }
+        public string photo { get; set; }
+    }
+
+    public class ProduitUpdate 
+    {
+        public string id { get; set; }
+        public string designation { get; set; }
+        public double prix { get; set; }
+        public string photo { get; set; }
+    }
+
 }

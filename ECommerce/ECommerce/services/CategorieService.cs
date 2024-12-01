@@ -69,7 +69,7 @@ namespace ECommerce.services
             httpClient.DefaultRequestHeaders.Clear();
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             var content = new StringContent(JsonConvert.SerializeObject(categorie), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = httpClient.PutAsync("categories", content).Result;
+            HttpResponseMessage response = httpClient.PutAsync($"categories/{categorie.id}", content).Result;
             if (response.IsSuccessStatusCode)
             {
                 return true;
@@ -77,7 +77,7 @@ namespace ECommerce.services
             return false;
         }
 
-        public bool DeleteCategorie(int id)
+        public bool DeleteCategorie(string id)
         {
             var token = SessionManager.GetTokenAsync().Result;
             if (token == null)

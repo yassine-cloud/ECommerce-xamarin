@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ECommerce.ui.categories.EditCategoriePage"
+             Title="Edit Category">
+    <StackLayout Padding="20">
+
+        <!-- Category Name Input -->
+        <Entry x:Name="NomEntry"
+               Placeholder="Category Name"
+               Text="{Binding nom}"
+               FontSize="16"
+               Margin="0,10"/>
+
+        <!-- Category Photo Input -->
+        <Entry x:Name="PhotoEntry"
+               Placeholder="Category Photo URL"
+               Text="{Binding photo}"
+               FontSize="16"
+               Margin="0,10"/>
+
+        <!-- Save Button -->
+        <Button Text="Save"
+                BackgroundColor="Green"
+                TextColor="White"
+                Clicked="OnSaveClicked"
+                Margin="10"/>
+
+        <!-- Cancel Button -->
+        <Button Text="Cancel"
+                BackgroundColor="Gray"
+                TextColor="White"
+                Clicked="OnCancelClicked"
+                Margin="10"/>
+    </StackLayout>
+</ContentPage>

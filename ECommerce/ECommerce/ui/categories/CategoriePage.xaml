@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="ECommerce.ui.categories.CategoriePage"
+             Title="Categories">
+    <StackLayout Padding="20">
+        <!-- Title -->
+        <Label Text="Categories"
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               Margin="0,10"/>
+
+        <!-- ListView to display categories -->
+        <ListView x:Name="CategoriesListView"
+                  ItemsSource="{Binding Categories}"
+                  SelectedItem="{Binding SelectedCategory}"
+                  ItemSelected="OnCategorySelected">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <ffimageloading:CachedImage 
+                                Source="{Binding photo}" 
+                                WidthRequest="100" 
+                                HeightRequest="100"
+    
+                                />
+                            <!-- Category Name -->
+                            <Label Text="{Binding nom}" 
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="Start" 
+                                   FontSize="16"/>
+
+                            <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="EndAndExpand"
+                             VerticalOptions="Center">
+                                <!-- Edit Button -->
+                                <ImageButton Source="edit_icon.png"
+                                 WidthRequest="30"
+                                 HeightRequest="30"
+                                 BackgroundColor="White"
+                                 Clicked="OnEditCategoryClicked"
+                                 CommandParameter="{Binding .}"/>
+
+                                <!-- Delete Button -->
+                                <ImageButton Source="delete_icon.png"
+                                 WidthRequest="30"
+                                 HeightRequest="30"
+                                 Clicked="OnDeleteCategoryClicked"
+                                 CommandParameter="{Binding .}"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Add Category Button -->
+        <Button Text="Add Category"
+                BackgroundColor="Green"
+                TextColor="White"
+                Clicked="OnAddCategoryClicked"
+                Margin="10"/>
+    </StackLayout>
+</ContentPage>

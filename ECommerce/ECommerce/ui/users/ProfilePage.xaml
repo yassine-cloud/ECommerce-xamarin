@@ -47,7 +47,15 @@
                     CornerRadius="10"
                     Command="{Binding EditProfileCommand}" />
 
-            <Button Text="Show All users"
+                <Button Text="Show All Categories ADMIN"
+                    x:Name="btnShowCategories"
+                    BackgroundColor="#FF9800"
+                    TextColor="White"
+                    IsVisible="false"
+                    CornerRadius="10"
+                    Command="{Binding ShowAllCategories}" />
+
+                <Button Text="Show All users ADMIN"
                     x:Name="btnShowUsers"
                     BackgroundColor="#FFC107"
                     TextColor="White"

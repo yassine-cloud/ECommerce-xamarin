@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ECommerce.auth;
 using ECommerce.models;
+using ECommerce.ui.categories;
 using ECommerce.ui.users;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -30,6 +31,7 @@ namespace ECommerce
             // Check if user is logged in
 
             btnShowUsers.IsVisible = SessionManager.GetUser().role == models.Role.ADMIN;
+            btnShowCategories.IsVisible = SessionManager.GetUser().role == models.Role.ADMIN;
             BindingContext = new ProfileViewModel(SessionManager.GetUser(), Navigation);
         }
 
@@ -45,6 +47,7 @@ namespace ECommerce
 
         public Command GoToPanierCommand { get; }
         public Command EditProfileCommand { get; }
+        public Command ShowAllCategories { get; }
         public Command ShowAllUsers { get; }
         public Command LogoutCommand { get; }
 
@@ -59,6 +62,7 @@ namespace ECommerce
 
             GoToPanierCommand = new Command(OnGoToPanier);
             EditProfileCommand = new Command(OnEditProfile);
+            ShowAllCategories = new Command(OnShowAllCategories);
             ShowAllUsers = new Command(OnShowAllUsers);
             LogoutCommand = new Command(OnLogout);
         }
@@ -87,6 +91,11 @@ namespace ECommerce
         private async void OnEditProfile()
         {
             await _navigation.PushAsync(new EditProfilePage());
+        }
+
+        private async void OnShowAllCategories()
+        {
+            await _navigation.PushAsync(new CategoriePage());
         }
 
         private async void OnShowAllUsers()
